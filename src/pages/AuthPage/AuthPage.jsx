@@ -7,7 +7,7 @@ import "./AuthPage.scss";
 
 const AuthPage = () => {
 
-  const baseUrl = 'https://to-do-list-back-nest-6krxrhxnd-antonnik15.vercel.app'
+  const baseUrl = 'https://to-do-list-back-nest-gloae4z4n-antonnik15.vercel.app'
 
   const history = useHistory();
 
