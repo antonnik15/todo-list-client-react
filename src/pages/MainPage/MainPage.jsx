@@ -49,7 +49,7 @@ const MainPage = () => {
         })
         .catch((error) => {
           const errorArray = error.response.data.message.map(e => e.message);
-          errorArray.forEach(e => alert(e));
+          errorArray.forEach(e => alert(`\n\n${e}`));
         });
     } catch (err) {
       console.log(err);
@@ -74,7 +74,7 @@ const MainPage = () => {
         })
         .catch((error) => {
           const errorArray = error.response.data.message.map(e => e.message);
-          errorArray.forEach(e => alert(e));
+          errorArray.forEach(e => alert(`\n\n${e}`));
         });
     } catch (err) {
       console.log(err);
