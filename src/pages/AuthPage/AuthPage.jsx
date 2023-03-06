@@ -32,10 +32,10 @@ const AuthPage = () => {
         .catch(function(error) {
           if (Array.isArray(error.response.data.message)) {
             const errorArray = error.response.data.message.map(e => e.message);
-            errorArray.forEach(e => alert(e));
+            errorArray.forEach(e => alert(`\n\n${e}`));
           }
           if (typeof error.response.data.message === "string") {
-            alert(error.response.data.message);
+            alert(`\n\n${error.response.data.message}`);
           }
         });
     } catch (e) {
