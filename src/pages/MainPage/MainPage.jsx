@@ -12,7 +12,7 @@ const MainPage = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [toDoId, setToDoId] = useState("");
 
-  const baseUrl = 'http://localhost:5000'
+  const baseUrl = 'https://to-do-list-back-nest-2jscnnb28-antonnik15.vercel.app'
 
   const getAllTasks = useCallback(async () => {
     try {
