@@ -7,7 +7,7 @@ import "./AuthPage.scss";
 
 const AuthPage = () => {
 
-  const baseUrl = 'https://to-do-list-back-nest-gloae4z4n-antonnik15.vercel.app'
+  const baseUrl = 'http://localhost:5000'
 
   const history = useHistory();
 
@@ -24,11 +24,15 @@ const AuthPage = () => {
 
   const registerHandler = async () => {
     try {
+      let userId = '';
       await axios.post(`${baseUrl}/auth/registration`, { ...form }, {
         headers: {
           "Content-Type": "application/json"
         }
-      }).then(() => history.push("/"))
+      }).then((response) => {
+        history.push("/");
+        userId = response.data.userId;
+      })
         .catch(function(error) {
           if (Array.isArray(error.response.data.message)) {
             const errorArray = error.response.data.message.map(e => e.message);
@@ -38,6 +42,13 @@ const AuthPage = () => {
             alert(`\n\n${error.response.data.message}`);
           }
         });
+
+      const text = 'Test task'
+      await axios.post(`${baseUrl}/todo/add`, { text, userId }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
     } catch (e) {
       console.log(e);
     }
@@ -51,18 +62,17 @@ const AuthPage = () => {
           "Content-Type": "application/json"
         }
       })
+        .then(response => {
+          login(response.data.token, response.data.userId);
+        })
         .catch(function(error) {
           if (typeof error.response.data.message === "string") {
             alert(`\n\n${error.response.data.message}`);
           }
-          if(Array.isArray(error.response.data.message)) {
+          if (Array.isArray(error.response.data.message)) {
             const errorArray = error.response.data.message.map(e => e.message);
             errorArray.forEach(e => alert(`\n\n${e}`));
           }
-        })
-
-        .then(response => {
-          login(response.data.token, response.data.userId);
         });
     } catch (err) {
       console.log(err);

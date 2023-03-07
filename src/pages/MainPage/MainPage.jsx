@@ -12,7 +12,7 @@ const MainPage = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [toDoId, setToDoId] = useState("");
 
-  const baseUrl = 'https://to-do-list-back-nest-gloae4z4n-antonnik15.vercel.app'
+  const baseUrl = 'http://localhost:5000'
 
   const getAllTasks = useCallback(async () => {
     try {
@@ -181,7 +181,7 @@ const MainPage = () => {
                   <div className={cls.join(" ")} key={index}>
                     <div className="col todos-num">{index + 1}</div>
                     <div className="col todos-text">{todo.text}</div>
-                    <div className="col todos-createdAt">createdAt: {todo.createdAt}</div>
+                    <div className="col todos-createdAt">Created at: {todo.createdAt}</div>
                     <div className="col todos-buttons">
                       <i className="material-icons dark-text" onClick={() => {
                         setIsUpdating(true);
