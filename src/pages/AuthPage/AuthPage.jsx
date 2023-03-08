@@ -43,12 +43,12 @@ const AuthPage = () => {
           }
         });
 
-      const text = 'Test task'
+      const text = "Test task";
       await axios.post(`${baseUrl}/todo/add`, { text, userId }, {
         headers: {
           "Content-Type": "application/json"
         }
-      })
+      });
     } catch (e) {
       console.log(e);
     }
